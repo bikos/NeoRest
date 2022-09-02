@@ -22,4 +22,5 @@ A template for making POST request is included in the project.
 - Click on 'Send Request'
 - See the response in adjacent screen.
 
+<img width="1103" alt="Screen Shot 2022-09-01 at 10 43 05 PM" src="https://user-images.githubusercontent.com/4242921/188055926-0fda50c2-530c-48f2-9d17-2c71c59ca72a.png">
 
