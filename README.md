@@ -14,7 +14,7 @@
 - `npm start`
 - optional: include _.env_ in your _.gitignore_
 
-#### REST CLIENT
+## Testing Post Request
 A template for making POST request is included in the project.
 
 - In Vscode install REST Client
