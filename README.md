@@ -39,7 +39,7 @@ Content-Type: application/json
 | `START_ISO_DATE`      | string   | required   |Start Date in ISO Format ( YYYY-MM-DD)|
 | `END_ISO_DATE`      | string   | required   | End Date in ISO Format (YYYY-MM-DD) |
 | `DISTANCE`      | number   | required   | Distance from Earth in which NEO might be found|
-| `UNIT`          | string   | required   | SI unit of distance `kilometers` |
+| `UNIT`          | string   | required   | SI unit of distance, use `kilometers` |
 
 
 Please note the format of the JSON object and the header being sent as follows:
