@@ -22,6 +22,25 @@ A template for making POST request is included in the project.
 - Click on 'Send Request'
 - See the response in adjacent screen.
 
+```
+POST /neoInfo
+Content-Type: application/json
+{
+  "dateStart": <START_ISO_DATE>,
+  "dateEnd": <END_ISO_DATE>,
+  "within": {
+  "value": <DISTANCE>,
+  "units": <UNIT> 
+  }
+}
+```
+| Parameter       | Type     | Required?  | Description  |
+| -------------   |----------|------------|--------------|
+| `START_ISO_DATE`      | string   | required   |Start Date in ISO Format ( YYYY-MM-DD)|
+| `END_ISO_DATE`      | string   | required   | End Date in ISO Format (YYYY-MM-DD) |
+| `DISTANCE`      | number   | required   | Distance from Earth in which NEO might be found|
+| `UNIT`          | string   | required   | SI unit of distance `kilometers` |
+
 
 Please note the format of the JSON object and the header being sent as follows:
 
