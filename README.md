@@ -8,19 +8,13 @@
 - Update your key to .env file
 
 ## Installation
-
+- `git clone https://github.com/bikos/NeoRest.git`
 - `cd NeoRest`
 - `npm install`
 - `npm start`
 - optional: include _.env_ in your _.gitignore_
 
 ## Testing Post Request
-A template for making POST request is included in the project.
-
-- In Vscode install REST Client
-- Open the test.http file inside the src folder
-- Click on 'Send Request'
-- See the response in adjacent screen.
 
 ```
 POST /neoInfo
@@ -40,6 +34,16 @@ Content-Type: application/json
 | `END_ISO_DATE`      | string   | required   | End Date in ISO Format (YYYY-MM-DD) |
 | `DISTANCE`      | number   | required   | Distance from Earth in which NEO might be found|
 | `UNIT`          | string   | required   | SI unit of distance, use `kilometers` |
+
+
+```
+A template for making POST request is included in the project.
+
+- In Vscode install REST Client
+- Open the test.http file inside the src folder
+- Click on 'Send Request'
+- See the response in adjacent screen.
+```
 
 
 Please note the format of the JSON object and the header being sent as follows:
