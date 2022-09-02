@@ -9,7 +9,7 @@
 
 ## Installation
 
-- `cd node-express-server-rest-api`
+- `cd NeoRest`
 - `npm install`
 - `npm start`
 - optional: include _.env_ in your _.gitignore_
