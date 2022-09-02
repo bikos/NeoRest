@@ -3,12 +3,17 @@ import { interval } from 'rxjs';
 import { DateTime } from 'luxon';
 import * as _ from 'lodash';
 
+/**
+ * Stores Data fetched by NASA API, this is maintained by our internal
+ * call to the API and serves as the source of DATA for further processing.
+ */
 const dataSource = {
   data: [],
 };
 
 /**
- * Function that maintains the data from NASA API in the service
+ * Function that maintains the data from NASA API in the service, it constantly
+ * polls the API in the specified interval for any changes.
  *
  * @returns Promise
  */
@@ -19,14 +24,24 @@ const refreshFunction = () => {
     } else {
       await fetchInfo();
       resolve(dataSource.data);
+
       // now let's put observable to work to fetch data by HEART_BEAT
       // as per NASA's API documentation we cannot send request more than 1,000
-      // requests per HOUR
+      // requests per HOUR with a valid API key and not more than 30 per HOUR with demo_key
+      if (process.env.API_KEY === 'DEMO_KEY') {
+        //Make sure the HEART_BEAT is big enough
+        process.env.HEART_BEAT =
+          +process.env.HEART_BEAT >= 600000
+            ? process.env.HEART_BEAT
+            : 600000;
+      }
+
       const hb =
-        process.env.HEART_BEAT > 10000
+        +process.env.HEART_BEAT > 10000
           ? process.env.HEART_BEAT
           : 10000;
-      interval(hb).subscribe((count) => {
+      console.log('Fetching Data in inteval of ' + hb + ' ms');
+      interval(+hb).subscribe((count) => {
         fetchInfo(count);
       });
     }

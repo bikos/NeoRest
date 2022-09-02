@@ -5,7 +5,9 @@
 - [node & npm](https://nodejs.org/en/)
 - [git](https://www.robinwieruch.de/git-essential-commands/)
 - API Key from https://api.nasa.gov/
-- Update your key to .env file
+- Update your key to .env file (if using just DEMO key make sure you follow NASA's API requirement)
+- Get VS Code REST Client extension from https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
 
 ## Installation
 - `git clone https://github.com/bikos/NeoRest.git`
