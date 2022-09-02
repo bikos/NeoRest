@@ -1,0 +1,11 @@
+POST http://localhost:3000/neoInfo HTTP/1.1
+Content-Type: application/json
+
+{
+  "dateStart": "1900-12-27",
+  "dateEnd": "1900-12-27",
+  "within": {
+  "value": 32000000,
+  "units": "kilometers"
+  }
+}
