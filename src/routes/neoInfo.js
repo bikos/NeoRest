@@ -7,16 +7,14 @@ import {
 const router = Router();
 
 router.post('/', async (req, res) => {
-  console.log('validity verification');
   const validity = checkInputRequest(req.body);
-  console.log('data extraction');
   const requestData = await getData(req.body);
   if (!validity.valid) {
     // we know the request sanitization failed, let's send back what exactly failed
     return res.status(400).send(validity.error);
   } else {
     // moving ahead with fetched data
-    console.log('returning data');
+    console.log('returning success data');
     return res.status(200).send(requestData);
   }
 });

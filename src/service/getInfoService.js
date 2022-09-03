@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { interval } from 'rxjs';
-import { DateTime } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import * as _ from 'lodash';
 
 /**
@@ -9,6 +9,7 @@ import * as _ from 'lodash';
  */
 const dataSource = {
   data: [],
+  date: null,
 };
 
 /**
@@ -20,33 +21,56 @@ const dataSource = {
 const refreshFunction = () => {
   return new Promise(async (resolve, reject) => {
     if (dataSource.data.length) {
-      resolve(dataSource.data);
+      if (dataSource.date) {
+        // is this data too old? Atleast fetch it in an HOUR
+        // to stay relevant
+        const now = Date.now();
+
+        const diff = Math.floor(
+          (now - dataSource.date) / (1000 * 60),
+        );
+
+        if (diff >= 10) {
+          await fetchInfo();
+          resolve(dataSource.data);
+        } else {
+          resolve(dataSource.data);
+        }
+      }
     } else {
       await fetchInfo();
       resolve(dataSource.data);
 
-      // now let's put observable to work to fetch data by HEART_BEAT
-      // as per NASA's API documentation we cannot send request more than 1,000
-      // requests per HOUR with a valid API key and not more than 30 per HOUR with demo_key
-      if (process.env.API_KEY === 'DEMO_KEY') {
-        //Make sure the HEART_BEAT is big enough
-        process.env.HEART_BEAT =
-          +process.env.HEART_BEAT >= 60000
-            ? process.env.HEART_BEAT
-            : 60000;
-      }
-
-      const hb =
-        +process.env.HEART_BEAT > 10000
-          ? process.env.HEART_BEAT
-          : 10000;
-      console.log('Fetching Data in inteval of ' + hb + ' ms, Started at'+ DateTime.now().toISO() );
-      interval(+hb).subscribe((count) => {
-        fetchInfo(count);
-      });
+      //## If you want more relevant data pulled at every specified interval (env.HEART_BEAT) Enable this method##//
+      // recurringPolling();
     }
   });
 };
+
+function recurringPolling() {
+  // now let's put observable to work to fetch data by HEART_BEAT
+  // as per NASA's API documentation we cannot send request more than 1,000
+  // requests per HOUR with a valid API key and not more than 30 per HOUR with demo_key
+  if (process.env.API_KEY === 'DEMO_KEY') {
+    //Make sure the HEART_BEAT is big enough
+    process.env.HEART_BEAT =
+      +process.env.HEART_BEAT >= 60000
+        ? process.env.HEART_BEAT
+        : 60000;
+  }
+
+  const hb =
+    +process.env.HEART_BEAT > 10000 ? process.env.HEART_BEAT : 10000;
+  console.log(
+    'Fetching Data in inteval of ' +
+      hb +
+      ' ms, Started at' +
+      DateTime.now().toISO(),
+  );
+  interval(+hb).subscribe((count) => {
+    fetchInfo(count);
+  });
+}
 
 /**
  * Function to fetch data from the API
@@ -59,6 +83,7 @@ async function fetchInfo(count) {
       `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${process.env.API_KEY}`,
     );
     dataSource.data = result.data.near_earth_objects;
+    dataSource.date = Date.now();
   } catch (error) {
     console.log(error);
   }
