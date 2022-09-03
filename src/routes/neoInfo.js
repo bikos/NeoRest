@@ -13,11 +13,11 @@ router.post('/', async (req, res) => {
   const requestData = await getData(req.body);
   if (!validity.valid) {
     // we know the request sanitization failed, let's send back what exactly failed
-    return res.send(validity.error);
+    return res.status(400).send(validity.error);
   } else {
     // moving ahead with fetched data
     console.log('returning data');
-    return res.send(requestData);
+    return res.status(200).send(requestData);
   }
 });
 

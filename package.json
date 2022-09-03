@@ -5,22 +5,31 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/server.js",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "npx jest --silent"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.18.13",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
-    "nodemon": "^2.0.15"
+    "babel-cli": "^7.0.0-0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^29.0.1",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^29.0.1",
+    "nodemon": "^2.0.15",
+    "regenerator-runtime": "^0.13.9",
+    "superagent": "^8.0.0",
+    "supertest": "^6.2.4"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "jshint": "^2.13.5",
     "lodash": "^4.17.21",
     "luxon": "^3.0.3",
     "rxjs": "^7.5.6",

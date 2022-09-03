@@ -31,16 +31,16 @@ const refreshFunction = () => {
       if (process.env.API_KEY === 'DEMO_KEY') {
         //Make sure the HEART_BEAT is big enough
         process.env.HEART_BEAT =
-          +process.env.HEART_BEAT >= 600000
+          +process.env.HEART_BEAT >= 60000
             ? process.env.HEART_BEAT
-            : 600000;
+            : 60000;
       }
 
       const hb =
         +process.env.HEART_BEAT > 10000
           ? process.env.HEART_BEAT
           : 10000;
-      console.log('Fetching Data in inteval of ' + hb + ' ms');
+      console.log('Fetching Data in inteval of ' + hb + ' ms, Started at'+ DateTime.now().toISO() );
       interval(+hb).subscribe((count) => {
         fetchInfo(count);
       });
