@@ -22,6 +22,5 @@ app.use('/neoInfo', routes.neoInfo);
 //### START POLLING DATA###//
 refreshFunction();
 
-app.listen(process.env.PORT, () =>
-  console.log(`Example app listening on port ${process.env.PORT}!`),
-);
+export default app;
+
