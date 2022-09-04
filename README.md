@@ -14,9 +14,11 @@
 - `cd NeoRest`
 - `npm install`
 - `npm start`
+- optional: include _.env_ in your _.gitignore_
+
 For Unit Test
 - `npm test`
-- optional: include _.env_ in your _.gitignore_
+
 
 ## Testing Post Request
 
