@@ -26,7 +26,7 @@ const refreshFunction = () => {
         const diff = Math.floor(
           (now - dataSource.date) / (1000 * 60),
         );
-        // is this data too old? 
+        // is this data too old?
         // let'a pull new cache in difference of 10 minutes!
         if (diff >= 10) {
           await fetchInfo();
@@ -108,7 +108,7 @@ async function getData(fObj) {
 
 /**
  * Function that filters the NEO data against the Filter parameter and returns
- * the array of NEO names.
+ * the array of NEO names with the date closest to Earth.
  * @param {*} fObj Filter parameters as Date, Distance and Unit
  * @returns Object contaning the array of NEO names
  */
@@ -132,7 +132,11 @@ function filterData(fObj) {
         // okay, we got the NEO in the time range
         // does it fullfill the distance requirement?
         if (+closeApp.miss_distance.kilometers <= distance) {
-          returnObj.asterioids.push(NEO.name);
+          returnObj.asterioids.push({
+            name: NEO.name,
+            date: closeApp.close_approach_date,
+            distance: +closeApp.miss_distance.kilometers,
+          });
         }
       }
     });
