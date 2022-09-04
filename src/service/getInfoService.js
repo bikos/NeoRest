@@ -22,14 +22,12 @@ const refreshFunction = () => {
   return new Promise(async (resolve, reject) => {
     if (dataSource.data.length) {
       if (dataSource.date) {
-        // is this data too old? Atleast fetch it in an HOUR
-        // to stay relevant
         const now = Date.now();
-
         const diff = Math.floor(
           (now - dataSource.date) / (1000 * 60),
         );
-
+        // is this data too old? 
+        // let'a pull new cache in difference of 10 minutes!
         if (diff >= 10) {
           await fetchInfo();
           resolve(dataSource.data);
