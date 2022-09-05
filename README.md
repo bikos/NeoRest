@@ -14,7 +14,7 @@
 - `cd NeoRest`
 - `npm install`
 - `npm start`
-- optional: include _.env_ in your _.gitignore_
+-  optional: include _.env_ in your _.gitignore_
 
 Default key is Demo Key and it works. If you have API Key from NASA replace the default key in .env file.
 
@@ -52,6 +52,38 @@ A template for making POST request is included in the project.
 - Click on 'Send Request'
 - See the response in adjacent screen.
 ```
+
+```
+Response of a successful request
+```
+
+{
+  "asteroids": [
+    {
+      "name": "433 Eros (A898 PA)",
+      "date": "2012-01-31",
+      "distance": 26729521.135077033
+    },
+    {
+      "name": "433 Eros (A898 PA)",
+      "date": "2019-01-15",
+      "distance": 31205919.274956476
+    },
+    {
+      "name": "1566 Icarus (1949 MA)",
+      "date": "2015-06-16",
+      "distance": 8053781.761441007
+    }]
+ }   
+
+| Parameter       | Type     | Description  |
+| -------------   |----------|--------------|
+| `asteroids`          | list     | List of asteroids  |
+| `name`         | string   | Name of the asteroid |
+| `date`       | string   | ISO date the object was closest to earth |
+| `distance`        | number   | Distance between the asteroid and earth in Kilometers |
+
+
 
 
 Please note the format of the JSON object and the header being sent as follows:

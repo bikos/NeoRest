@@ -119,7 +119,7 @@ function filterData(fObj) {
   const endTime = DateTime.fromISO(fObj.dateEnd);
   const distance = fObj.within.value;
   const returnObj = {
-    asterioids: [],
+    asteroids: [],
   };
 
   // check each NEO's close_approach_data
@@ -132,7 +132,7 @@ function filterData(fObj) {
         // okay, we got the NEO in the time range
         // does it fullfill the distance requirement?
         if (+closeApp.miss_distance.kilometers <= distance) {
-          returnObj.asterioids.push({
+          returnObj.asteroids.push({
             name: NEO.name,
             date: closeApp.close_approach_date,
             distance: +closeApp.miss_distance.kilometers,

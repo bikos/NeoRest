@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // * Routes * //
 app.use('/neoInfo', routes.neoInfo);
 
+// * Default option for other routes * //
 app.use(function (req, res, next) {
   res.status(404);
   res.json({
@@ -24,8 +25,6 @@ app.use(function (req, res, next) {
   });
   next();
 });
-
-// * Start * //
 
 //### START POLLING DATA###//
 refreshFunction();

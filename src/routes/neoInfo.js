@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
   if (!validity.valid) {
     // we know the request sanitization failed, let's send back what exactly failed
     return res.status(400).send(validity.error);
-  } else if (validity.valid && Array.isArray(requestData.asterioids)) {
+  } else if (validity.valid && Array.isArray(requestData.asteroids)) {
     // moving ahead with fetched data
     console.log('returning success data');
     return res.status(200).send(requestData);
