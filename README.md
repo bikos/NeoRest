@@ -16,6 +16,8 @@
 - `npm start`
 - optional: include _.env_ in your _.gitignore_
 
+Default key is Demo Key and it works. If you have API Key from NASA replace the default key in .env file.
+
 For Unit Test
 - `npm test`
 
