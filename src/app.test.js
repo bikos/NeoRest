@@ -46,6 +46,20 @@ describe('POST/neoInfo', () => {
           });
           expect(response.statusCode).toBe(400);
       });
+
+      test('Should respond with a 404 status code when wrong route is used', async () => {
+        const response =await request(app)
+          .post('/neoInfoh')
+          .send({
+            dateEnd: '2021-12-28',
+            within: {
+              value: 32000000,
+              units: 'kilometers',
+            },
+          });
+          expect(response.statusCode).toBe(404);
+      });
+      
   });
 
 });
