@@ -53,10 +53,10 @@ A template for making POST request is included in the project.
 - See the response in adjacent screen.
 ```
 
-```
-Response of a successful request
-```
 
+Response of a successful request
+
+```
 {
   "asteroids": [
     {
@@ -75,6 +75,7 @@ Response of a successful request
       "distance": 8053781.761441007
     }]
  }   
+ ```
 
 | Parameter       | Type     | Description  |
 | -------------   |----------|--------------|
@@ -88,5 +89,5 @@ Response of a successful request
 
 Please note the format of the JSON object and the header being sent as follows:
 
-<img width="1103" alt="Screen Shot 2022-09-01 at 10 43 05 PM" src="https://user-images.githubusercontent.com/4242921/188055926-0fda50c2-530c-48f2-9d17-2c71c59ca72a.png">
+<img width="1308" alt="Screen Shot 2022-09-05 at 11 10 24 AM" src="https://user-images.githubusercontent.com/4242921/188487991-c9c68fe7-3e15-4b25-a57b-dde1244496d7.png">
 
