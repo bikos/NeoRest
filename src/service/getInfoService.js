@@ -108,9 +108,9 @@ async function getData(fObj) {
 
 /**
  * Function that filters the NEO data against the Filter parameter and returns
- * the array of NEO names with the date closest to Earth.
+ * the array of NEO names with the date and distance closest to Earth.
  * @param {*} fObj Filter parameters as Date, Distance and Unit
- * @returns Object contaning the array of NEO names
+ * @returns Object contaning the array of NEO name, date and distance
  */
 function filterData(fObj) {
   // filter by date range.
@@ -123,7 +123,7 @@ function filterData(fObj) {
   };
 
   // check each NEO's close_approach_data
-  // Iterating through the available NEO's firt.
+  // Iterating through the available NEO's first.
   _.each(tempData, (NEO) => {
     _.each(NEO.close_approach_data, (closeApp) => {
       // Now iterating through close_approach_data to see if the distance was closer in certain days
@@ -192,4 +192,4 @@ function checkInputRequest(fObj) {
   return returnObj;
 }
 
-export { getData, checkInputRequest, refreshFunction };
+export { getData, checkInputRequest, filterData, refreshFunction };

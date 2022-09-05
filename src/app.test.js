@@ -1,10 +1,7 @@
-import { TestScheduler } from 'rxjs/testing';
 import request from 'supertest';
 import app from './app.js';
 
 jest.setTimeout(10000);
-
-jest.mock()
 
 describe('POST/neoInfo', () => {
   describe('given startDate endDate and Within Units', () => {
@@ -20,7 +17,7 @@ describe('POST/neoInfo', () => {
             units: 'kilometers',
           },
         });
-        expect(response.statusCode).toBe(200)
+        expect(response.statusCode).toBe(200);
     });
     // should specify json in content type
     test("Should declare content/type in JSON object", async () =>{
@@ -35,7 +32,7 @@ describe('POST/neoInfo', () => {
           },
         });
         expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
-    })
+    });
 
     test('Should respond with a 400 status code when wrong JSON is sent', async () => {
         const response =await request(app)
@@ -47,9 +44,8 @@ describe('POST/neoInfo', () => {
               units: 'kilometers',
             },
           });
-          expect(response.statusCode).toBe(400)
+          expect(response.statusCode).toBe(400);
       });
-    // should respond with a json object with asteroid names
   });
 
 });
